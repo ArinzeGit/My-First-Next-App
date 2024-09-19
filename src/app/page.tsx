@@ -16,9 +16,23 @@ export default function Home() {
         width={800}
         height={800}
       />
-      <Link href="/about" className="text-blue-500 underline">
-        About Us
-      </Link>
+      <div className="flex flex-col items-start">
+        <Link href="/about" className="text-blue-500 underline">
+          About Us
+        </Link>
+        <Link href="/login" className="text-blue-500 underline">
+          Login
+        </Link>
+        <Link href="/dashboard" className="text-blue-500 underline">
+          Dashboard
+        </Link>
+        <Link href="/profiles/1" className="text-blue-500 underline">
+          Profile 1
+        </Link>
+        <Link href="/profiles/2" className="text-blue-500 underline">
+          Profile 2
+        </Link>
+      </div>
     </div>
   );
 }
