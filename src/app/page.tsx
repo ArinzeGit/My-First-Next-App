@@ -13,8 +13,8 @@ export default function Home() {
       <Image
         src="/images/Arinze in suit.jpg"
         alt="Arinze in a suit"
-        width={800}
-        height={800}
+        width={400}
+        height={400}
       />
       <div className="flex flex-col items-start">
         <Link href="/about" className="text-blue-500 underline">
@@ -26,11 +26,11 @@ export default function Home() {
         <Link href="/dashboard" className="text-blue-500 underline">
           Dashboard
         </Link>
-        <Link href="/profiles/1" className="text-blue-500 underline">
-          Profile 1
+        <Link href="/dynamic/1" className="text-blue-500 underline">
+          Dynamic route 1
         </Link>
-        <Link href="/profiles/2" className="text-blue-500 underline">
-          Profile 2
+        <Link href="/dynamic/2" className="text-blue-500 underline">
+          Dynamic route 2
         </Link>
       </div>
     </div>
