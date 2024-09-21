@@ -1,7 +1,6 @@
+import { NextResponse } from "next/server";
+
 export async function GET() {
-    return new Response(JSON.stringify({ message: 'Hello from API route!' }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return NextResponse.json({ message: 'Hello from API route!' });
   }
   
