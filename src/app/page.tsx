@@ -5,18 +5,23 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50 p-6">
       <Header />
-      <p className="mt-4">Welcome to the homepage!</p>
-      <h1 className="text-2xl font-bold">Welcome to My Next.js App</h1>
-      <Button label="Click Me" />
-      <Image
-        src="/images/Arinze in suit.jpg"
-        alt="Arinze in a suit"
-        width={400}
-        height={400}
-      />
-      <div className="flex flex-col items-start">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mt-6">
+          Welcome to My Next.js App
+        </h1>
+        <p className="mt-4 text-gray-600">Welcome to the homepage!</p>
+        <Button label="Click Me" />
+        <Image
+          src="/images/Arinze in suit.jpg"
+          alt="Arinze in a suit"
+          width={400}
+          height={400}
+          className="rounded-lg shadow-lg mt-6 mx-auto"
+        />
+      </div>
+      <div className="mt-8 space-y-4 flex flex-col items-start">
         <Link href="/about" className="text-blue-500 underline">
           About Us
         </Link>
