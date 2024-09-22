@@ -1,4 +1,5 @@
 import "./globals.css";
+import ClientLayout from "./ClientLayout";
 
 export const metadata = {
   title: "My Next.js App",
@@ -11,16 +12,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <header className="bg-gray-800 text-white p-4">
-          <h1 className="text-lg">My App Header</h1>
-        </header>
-        <main>{children}</main>
-        <footer className="bg-gray-800 text-white p-4">
-          <p>My App Footer</p>
-        </footer>
-      </body>
-    </html>
+    <ClientLayout>
+      <html lang="en">
+        <body>
+          <header className="bg-gray-800 text-white p-4">
+            <h1 className="text-lg">My App Header</h1>
+          </header>
+          <main>{children}</main>
+          <footer className="bg-gray-800 text-white p-4">
+            <p>My App Footer</p>
+          </footer>
+        </body>
+      </html>
+    </ClientLayout>
   );
 }
