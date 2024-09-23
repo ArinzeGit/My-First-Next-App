@@ -3,16 +3,25 @@ import { useState } from "react";
 import Link from "next/link"; // Import Link for navigation
 
 export default function Dashboard() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any[]>([]); // Make sure users is typed as an array
 
   const fetchUsers = async () => {
-    const response = await fetch("/api/users");
-    const data = await response.json();
-    setUsers(data);
+    try {
+      const response = await fetch("/api/users");
+      const data = await response.json();
+      console.log("Fetched users:", data); // Log the data to check its structure
+      if (Array.isArray(data)) {
+        setUsers(data); // Only set users if the data is an array
+      } else {
+        console.error("Expected an array but got:", data);
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
 
   const clearUsers = () => {
-    setUsers([]);
+    setUsers([]); // Clear the users array
   };
 
   return (
@@ -37,14 +46,19 @@ export default function Dashboard() {
           </button>
         </div>
         <ul className="mt-6 space-y-3">
-          {users.map((user: any, index: number) => (
-            <li
-              key={index}
-              className="bg-gray-50 border border-gray-200 p-3 rounded-md shadow-sm"
-            >
-              {user.name}
-            </li>
-          ))}
+          {/* Safeguard map by ensuring users is an array */}
+          {Array.isArray(users) && users.length > 0 ? (
+            users.map((user: any, index: number) => (
+              <li
+                key={index}
+                className="bg-gray-50 border border-gray-200 p-3 rounded-md shadow-sm"
+              >
+                {user.name}
+              </li>
+            ))
+          ) : (
+            <p>No users to display</p>
+          )}
         </ul>
 
         {/* Back to Home button */}

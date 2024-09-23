@@ -3,12 +3,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link"; // Import Link for navigation
+import Button from "@/components/Button";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // State to hold error message
   const router = useRouter();
+  const { data: session } = useSession();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,8 +90,16 @@ const LoginPage = () => {
           Login
         </button>
       </form>
+      {!session && (
+        <div className="mt-4">
+          <p className="text-l font-bold mb-4 text-center">OR</p>
+          <Button
+            label="Sign in with google"
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+          />
+        </div>
+      )}
 
-      {/* Back to Home button */}
       <Link
         href="/"
         className="mt-4 text-blue-500 underline hover:text-blue-700"
