@@ -1,23 +1,21 @@
 "use client"; // Make sure to use "use client" for client-side operations
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link"; // Import Link for navigation
 import Button from "@/components/Button";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // State to hold error message
-  const router = useRouter();
   const { data: session } = useSession();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(""); // Clear any existing error before submitting
 
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/customAuth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,6 +87,11 @@ const LoginPage = () => {
         >
           Login
         </button>
+        {/* Add hint for the demo credentials */}
+        <p className="mt-4 text-gray-600 text-center">
+          For practice, you can log in with <strong>user@example.com</strong>{" "}
+          and <strong>password</strong>.
+        </p>
       </form>
       {!session && (
         <div className="mt-4">

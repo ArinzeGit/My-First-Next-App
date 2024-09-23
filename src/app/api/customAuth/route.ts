@@ -1,4 +1,4 @@
-// app/api/login/route.ts
+// app/api/customAuth/route.ts
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
